@@ -3,8 +3,14 @@
 //基类
 require CORE_PATH . DS . 'Base.php';
 
+//包含Smarty类文件
+require CORE_PATH . DS . 'smarty/Smarty.class.php';
+
 //控制器
 require CORE_PATH . DS . 'Controller.php';
+
+//模型
+require CORE_PATH . DS . 'Model.php';
 
 //加载类库加载类
 //require CORE_PATH . DS . 'Loader.php';

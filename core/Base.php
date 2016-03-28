@@ -51,7 +51,7 @@ class Base
         $filePath =  ROOT_PATH . DS . 'controllers' . DS . $className . '.php';
         include($filePath);
         
-        $controller = new $className;
-        $controller->$a();
+        $controller = new $className($c);
+        $controller->run($a);
     }
 }

@@ -1,9 +1,12 @@
 <?php
-class SiteController
+class SiteController extends Controller
 {
     public function index()
     {
-        echo 'this is crabPHP';
+        $hello = 'hello world';
+        
+        $this->assign('hello', $hello);
+        $this->display();
     }
     
     public function hello()
