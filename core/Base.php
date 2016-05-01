@@ -21,7 +21,8 @@ class Base
      */
     public function init($config = null)
     {
-        
+        //TODO
+//        date_default_timezone_set();
     }
     
     /*
