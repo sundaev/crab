@@ -1,4 +1,9 @@
 <?php
+//配置文件
+require CORE_PATH . DS . 'Config.php';
+
+//公共函数文件
+require CORE_PATH . DS . 'Common.php';
 
 //基类
 require CORE_PATH . DS . 'Base.php';
@@ -8,6 +13,9 @@ require CORE_PATH . DS . 'smarty/Smarty.class.php';
 
 //控制器
 require CORE_PATH . DS . 'Controller.php';
+
+//数据库
+require CORE_PATH . DS . 'Db' . DS . 'Db.php';
 
 //模型
 require CORE_PATH . DS . 'Model.php';
