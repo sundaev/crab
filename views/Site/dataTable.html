@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+    <title>index</title>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+     
+    <!-- jQuery -->
+    <script type="text/javascript" charset="utf8" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+     
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
+
+</head>
+<body>
+<div class="form-horizontal">
+    <div class="form-group">
+        <label for="status" class="col-sm-1 control-label">状态筛选</label>
+        <div class="col-sm-2">
+            <select id="status" class="form-control">
+                    <option value="1">状态1</option>
+                    <option value="2">状态2</option>
+                    <option value="3">状态3</option>
+                <option value="">全部</option>
+
+            </select>
+        </div>
+    </div>
+</div>
+
+<table id="table" class="display">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>username</th>
+            <th>to_username</th>
+            <th>desc</th>
+            <td>status</td>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <foreach name="data" item="val">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </foreach>
+    </tbody>
+</table>
+<script>
+    $(function(){
+    var table = $("#table").DataTable({
+        "oLanguage": {
+            "sLengthMenu": "每页显示 _MENU_ 条记录",
+            "sZeroRecords": "抱歉， 没有找到",
+            "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+            "sInfoEmpty": "没有数据",
+            "sSearch": "关键字筛选：",
+            "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+            "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "前一页",
+                "sNext": "后一页",
+                "sLast": "尾页"
+            },
+        },
+        "ajax": {
+            "url":"/?c=site&a=ajaxTable",
+            "data": function ( d ) {
+                //添加额外的参数传给服务器
+                d.status = $('#status').val();
+            }
+        },
+        "processing": true,
+        "serverSide": true,
+        "fnRowCallback": function(nRow, aaData, iDisplayIndex) {
+            if(aaData[3]){
+                $('td:eq(3)', nRow).html('时间' + aaData[3]);
+            }
+            return nRow;
+        },
+        initComplete:initComplete,
+    });
+
+    function initComplete(){
+        $("#status").on('change', function(){
+            //当选择时间后，出发dt的重新加载数据的方法
+            table.ajax.reload();
+        });
+    }
+
+});
+</script>
+</body>
+</html>
