@@ -44,7 +44,7 @@ class SiteController extends Controller
         $aaData = array_slice($res, $start, $length);
 
         $data = [];
-        $data['sEcho'] = $_GET['sEcho'];
+        $data['sEcho'] = isset($_GET['sEcho']) ? $_GET['sEcho'] : 0;
         $data['iTotalDisplayRecords'] = count($res);
         $data['iTotalRecords'] = count($res);
         $data['aaData'] = $aaData;
