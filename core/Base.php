@@ -13,6 +13,7 @@ class Base
         {
             self::$app = new self;
         }
+        self::$app->init();
         return self::$app;
     }
     
@@ -21,8 +22,28 @@ class Base
      */
     public function init($config = null)
     {
-        //TODO
-//        date_default_timezone_set();
+        date_default_timezone_set('PRC');
+
+        //是否以调试模式运行
+        if(defined('APP_DEBUG') && APP_DEBUG == true){
+            ini_set('display_errors', 'On');    //开启错误报告
+            error_reporting(E_ALL);
+        }
+
+        //创建项目文件夹结构
+        $this->buildAppDir();
+
+        //自动加载
+
+        //router
+
+        //import目录
+
+        //加载组件components
+
+        
+
+
     }
     
     /*
@@ -54,5 +75,10 @@ class Base
         
         $controller = new $className($c);
         $controller->run($a);
+    }
+
+    public function buildAppDir()
+    {
+        //TODO
     }
 }
