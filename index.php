@@ -17,11 +17,14 @@ define('APP_PATH', dirname(__FILE__));
 define('ROOT_PATH', APP_PATH);
 
 /*系统核心库目录*/
-define('CORE_PATH', ROOT_PATH . DS . 'core');
+define('CORE_PATH', ROOT_PATH . DS . 'src');
 
 /*加载系统核心包*/
 require CORE_PATH . DS . 'core.php';
 
-Base::app();
+//自动加载
+require __DIR__ . '/vendor/autoload.php';
+
+use Crab\Base;
 
 Base::app()->run();

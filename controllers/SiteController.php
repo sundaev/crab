@@ -1,5 +1,6 @@
 
 <?php
+use Crab\Controller;
 class SiteController extends Controller
 {
     public function index()
